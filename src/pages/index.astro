@@ -1,0 +1,180 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import '../styles/landing.css';
+
+const title = 'Appalachian Grappling Collective';
+const description =
+	'A private, values-driven grappling collective in Dandridge, Tennessee.';
+
+const values = [
+	{
+		title: 'Respect',
+		icon: 'handshake',
+		text: 'Treat training partners, the space, and the craft with care.',
+	},
+	{
+		title: 'Humility',
+		icon: 'mountains',
+		image: '/images/humility-trans.png',
+		text: 'Leave ego at the door and stay open to learning.',
+	},
+	{
+		title: 'Accountability',
+		icon: 'shield',
+		text: 'Show up consistently, train safely, and keep your word.',
+	},
+	{
+		title: 'Community',
+		icon: 'people',
+		text: 'Help create a supportive, sustainable environment.',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page">
+		<header class="site-header" aria-label="Primary navigation">
+			<a class="brand" href="/" aria-label="Appalachian Grappling Collective home">
+				<span class="brand-mark">
+					<img src="/logo-1.png" alt="" />
+				</span>
+				<span class="brand-name">Appalachian<br />Grappling<br />Collective</span>
+			</a>
+			<nav class="main-nav" aria-label="Main menu">
+				<a class="is-active" href="#about">About</a>
+				<a href="#values">Values</a>
+				<a href="#membership">Membership</a>
+				<a href="#contact">Contact</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero" id="about" aria-labelledby="hero-title">
+				<img
+					class="hero-image"
+					src="/images/hero-beta-2.png"
+					alt="Grapplers training on mats in a private academy with mountain views."
+				/>
+				<div class="hero-scrim"></div>
+				<div class="hero-content">
+					<p class="eyebrow">Private Grappling Collective - Dandridge, Tennessee</p>
+					<h1 id="hero-title">A values-driven place to train, grow, and grapple.</h1>
+					<p>
+						Appalachian Grappling Collective is an intentionally small training group built
+						around respect, humility, accountability, and clean technical grappling. We are
+						selective by design and focused on creating a safe, high-character environment for
+						serious training partners.
+					</p>
+					<div class="hero-actions" aria-label="Landing page actions">
+						<a class="button primary" href="#contact">Request Information</a>
+						<a class="button secondary" href="#values">Read Our Values</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="values-section" id="values" aria-labelledby="values-title">
+				<div class="section-heading">
+					<h2 id="values-title">Built on more than training</h2>
+					<span aria-hidden="true"></span>
+				</div>
+				<div class="value-grid">
+					{
+						values.map((value) => (
+							<article class="value-card">
+								{
+									value.image ? (
+										<img class="value-image" src={value.image} alt="" />
+									) : (
+										<span class={`value-icon icon-${value.icon}`} aria-hidden="true" />
+									)
+								}
+								<h3>{value.title}</h3>
+								<p>{value.text}</p>
+							</article>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="membership-section" id="membership" aria-label="Membership overview">
+				<div class="membership-panel">
+					<span class="line-art line-mountains" aria-hidden="true"></span>
+					<h2>A private, intentional<br />training space</h2>
+					<p>
+						AGC currently operates as a small private collective with limited capacity. The
+						goal is to bring together good people who value technical grappling, steady
+						improvement, and a respectful culture. If the collective grows over time, a
+						dedicated local facility may follow.
+					</p>
+				</div>
+				<div class="membership-seal" aria-hidden="true">
+					<img src="/logo-1.png" alt="" />
+				</div>
+				<div class="membership-panel">
+					<span class="line-art line-paper" aria-hidden="true"></span>
+					<h2>Membership<br />by application</h2>
+					<p>
+						Because this is a private setting, prospective members are asked to introduce
+						themselves and complete a brief application before attending. We review every
+						inquiry carefully to preserve the quality, safety, and character of the group.
+					</p>
+					<a class="text-button" href="#contact">Start The Conversation</a>
+				</div>
+			</section>
+
+			<section class="interest-section" aria-labelledby="interest-title">
+				<div class="interest-content">
+					<h2 id="interest-title">Interested in learning more?</h2>
+					<p>Send a thoughtful introduction and we’ll follow up.</p>
+					<div class="interest-meta">
+						<span>Dandridge, TN</span>
+						<span>Appalachian Grappling Collective</span>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer" id="contact">
+			<div class="footer-brand">
+				<a class="brand" href="/" aria-label="Appalachian Grappling Collective home">
+					<span class="brand-mark">
+						<img src="/logo-1.png" alt="" />
+					</span>
+					<span class="brand-name">Appalachian<br />Grappling<br />Collective</span>
+				</a>
+				<div class="social-links" aria-label="Social links">
+					<a href="#" aria-label="Instagram">IG</a>
+					<a href="#" aria-label="Facebook">FB</a>
+					<a href="#" aria-label="YouTube">YT</a>
+				</div>
+			</div>
+			<div class="footer-links">
+				<h2>Quick Links</h2>
+				<a href="#about">About</a>
+				<a href="#values">Values</a>
+				<a href="#membership">Membership</a>
+				<a href="#contact">Contact</a>
+			</div>
+			<div class="footer-links">
+				<h2>Resources</h2>
+				<a href="#">Blog</a>
+				<a href="#">FAQ</a>
+				<a href="#">Rules &amp; Etiquette</a>
+				<a href="#">Waiver</a>
+			</div>
+			<address class="footer-contact">
+				<h2>Contact</h2>
+				<a href="tel:+14235557899">123 Jujitsu Way<br />Dandridge, TN 37725</a>
+				<a href="tel:+15551234567">(555) 123-4567</a>
+				<a href="mailto:info@appalachiangrappling.com">info@appalachiangrappling.com</a>
+			</address>
+			<p class="copyright">
+				© 2026 Appalachian Grappling Collective. All rights reserved.
+			</p>
+		</footer>
+	</body>
+</html>
