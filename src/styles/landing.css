@@ -252,12 +252,13 @@
 
 .button.primary {
 	background: var(--agc-gold);
-	color: #fff7ea;
+	color: #fff;
 }
 
 .button.primary:hover,
 .button.primary:focus-visible {
 	background: #c88443;
+	color: #fff;
 	box-shadow: 0 12px 24px rgba(8, 29, 23, 0.24);
 	transform: translateY(-1px);
 }
@@ -705,7 +706,7 @@
 .footer-contact {
 	display: flex;
 	flex-direction: column;
-	gap: 7px;
+	gap: 2px;
 	margin: 0;
 	font-style: normal;
 }
@@ -721,9 +722,32 @@
 
 .footer-links a,
 .footer-contact a {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	width: fit-content;
+	max-width: 100%;
+	padding: 8px 10px 8px 0;
 	color: rgba(238, 232, 220, 0.72);
 	font-size: 12px;
 	line-height: 1.35;
+	transition:
+		color 180ms ease,
+		transform 180ms ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible,
+.footer-contact a:hover,
+.footer-contact a:focus-visible {
+	color: #f5eee2;
+	transform: translateX(2px);
+}
+
+.footer-links a:focus-visible,
+.footer-contact a:focus-visible {
+	outline: 2px solid rgba(204, 145, 87, 0.72);
+	outline-offset: 3px;
 }
 
 .footer-contact a::before {
