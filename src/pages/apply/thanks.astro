@@ -1,0 +1,39 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import '../../styles/landing.css';
+
+const title = 'Application Received | AGC Grappling Collective';
+const description =
+	"Thank you for applying to join Appalachian Grappling Collective. Your application has been received, and we'll follow up as soon as possible.";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page application-page">
+		<Header active="apply" />
+
+		<main>
+			<section class="thanks-section" aria-labelledby="thanks-title">
+				<div class="thanks-panel">
+					<img src="/logo-1.png" alt="" />
+					<p class="eyebrow">Application Received</p>
+					<h1 id="thanks-title">Thanks for applying.</h1>
+					<p>
+						Your application has been sent to Appalachian Grappling Collective. We review each
+						submission carefully and will follow up if it looks like a good fit.
+					</p>
+					<div class="thanks-actions" aria-label="Confirmation page actions">
+						<a class="button primary" href="/"><span>Return Home</span></a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>

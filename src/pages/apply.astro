@@ -8,6 +8,7 @@ const title = 'Apply to Join the AGC Grappling Collective';
 const description =
 	'Apply to join Appalachian Grappling Collective, a private grappling group in Dandridge, Tennessee.';
 const formEmail = 'steadfast@agcbjj.com';
+const thanksURL = new URL('/apply/thanks', Astro.site);
 ---
 
 <!doctype html>
@@ -39,6 +40,7 @@ const formEmail = 'steadfast@agcbjj.com';
 					<input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" />
 					<input type="hidden" name="_subject" value="New AGC Membership Application" />
 					<input type="hidden" name="_template" value="table" />
+					<input type="hidden" name="_next" value={thanksURL} />
 
 					<div class="field-group">
 						<label for="name">Name</label>
