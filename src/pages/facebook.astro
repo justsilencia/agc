@@ -1,0 +1,41 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/landing.css';
+
+const title = 'Facebook Group Coming Soon | Appalachian Grappling Collective';
+const description =
+	'The Appalachian Grappling Collective Facebook group is coming soon as the collective gets established.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page">
+		<Header />
+
+		<main>
+			<section class="thanks-section" aria-labelledby="facebook-title">
+				<div class="thanks-panel">
+					<img src="/logo-1.png" alt="" />
+					<p class="eyebrow">Facebook Group</p>
+					<h1 id="facebook-title">Coming soon.</h1>
+					<p>
+						Appalachian Grappling Collective is still in its early stages, and we are building
+						the community with care. A Facebook group will be added once there is something
+						useful and worthwhile to share there.
+					</p>
+					<div class="thanks-actions" aria-label="Facebook coming soon page actions">
+						<a class="button primary" href="/apply"><span>Apply to Join</span></a>
+						<a class="button secondary dark" href="/"><span>Return Home</span></a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
