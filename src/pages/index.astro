@@ -10,22 +10,25 @@ const values = [
 	{
 		title: 'Respect',
 		icon: 'handshake',
+		image: '/images/respect-trans.png',
 		text: 'Treat training partners, the space, and the craft with care.',
 	},
 	{
-		title: 'Humility',
+		title: 'Faith',
 		icon: 'mountains',
 		image: '/images/humility-trans.png',
-		text: 'Leave ego at the door and stay open to learning.',
+		text: 'Faith is our strength, our guide, and our peace.',
 	},
 	{
 		title: 'Accountability',
 		icon: 'shield',
+		image: '/images/accountability-trans.png',
 		text: 'Show up consistently, train safely, and keep your word.',
 	},
 	{
 		title: 'Community',
 		icon: 'people',
+		image: '/images/community-trans.png',
 		text: 'Help create a supportive, sustainable environment.',
 	},
 ];
@@ -44,7 +47,23 @@ const values = [
 				</span>
 				<span class="brand-name">Appalachian<br />Grappling<br />Collective</span>
 			</a>
-			<nav class="main-nav" aria-label="Main menu">
+			<button
+				class="nav-toggle"
+				type="button"
+				aria-label="Open menu"
+				aria-controls="main-menu"
+				aria-expanded="false"
+			>
+				<span aria-hidden="true"></span>
+			</button>
+			<div class="nav-backdrop" data-nav-close></div>
+			<nav class="main-nav" id="main-menu" aria-label="Main menu">
+				<div class="mobile-nav-header">
+					<span>Menu</span>
+					<button class="nav-close" type="button" aria-label="Close menu" data-nav-close>
+						<span aria-hidden="true"></span>
+					</button>
+				</div>
 				<a class="is-active" href="#about">About</a>
 				<a href="#values">Values</a>
 				<a href="#membership">Membership</a>
@@ -65,13 +84,13 @@ const values = [
 					<h1 id="hero-title">A values-driven place to train, grow, and grapple.</h1>
 					<p>
 						Appalachian Grappling Collective is an intentionally small training group built
-						around respect, humility, accountability, and clean technical grappling. We are
+						around respect, faith, accountability, and clean technical grappling. We are
 						selective by design and focused on creating a safe, high-character environment for
 						serious training partners.
 					</p>
 					<div class="hero-actions" aria-label="Landing page actions">
-						<a class="button primary" href="#contact">Request Information</a>
-						<a class="button secondary" href="#values">Read Our Values</a>
+						<a class="button primary" href="#contact"><span>Request Information</span></a>
+						<a class="button secondary" href="#values"><span>Read Our Values</span></a>
 					</div>
 				</div>
 			</section>
@@ -122,7 +141,6 @@ const values = [
 						themselves and complete a brief application before attending. We review every
 						inquiry carefully to preserve the quality, safety, and character of the group.
 					</p>
-					<a class="text-button" href="#contact">Start The Conversation</a>
 				</div>
 			</section>
 
@@ -147,9 +165,14 @@ const values = [
 					<span class="brand-name">Appalachian<br />Grappling<br />Collective</span>
 				</a>
 				<div class="social-links" aria-label="Social links">
-					<a href="#" aria-label="Instagram">IG</a>
-					<a href="#" aria-label="Facebook">FB</a>
-					<a href="#" aria-label="YouTube">YT</a>
+					<a href="#" aria-label="Facebook group">
+						<svg viewBox="0 0 24 24" aria-hidden="true">
+							<path
+								d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.03 4.39 11.03 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.03 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.27h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"
+							></path>
+						</svg>
+						<span>Facebook Group</span>
+					</a>
 				</div>
 			</div>
 			<div class="footer-links">
@@ -176,5 +199,72 @@ const values = [
 				© 2026 Appalachian Grappling Collective. All rights reserved.
 			</p>
 		</footer>
+		<script>
+			const body = document.body;
+			const nav = document.querySelector('#main-menu');
+			const toggle = document.querySelector('.nav-toggle');
+			const closeControls = document.querySelectorAll('[data-nav-close]');
+			const navLinks = document.querySelectorAll('.main-nav a');
+			const mobileQuery = window.matchMedia('(max-width: 900px)');
+			const focusableSelector = 'a[href], button:not([disabled])';
+
+			const closeMenu = () => {
+				body.classList.remove('nav-open');
+				toggle?.setAttribute('aria-expanded', 'false');
+				toggle?.setAttribute('aria-label', 'Open menu');
+			};
+
+			const openMenu = () => {
+				body.classList.add('nav-open');
+				toggle?.setAttribute('aria-expanded', 'true');
+				toggle?.setAttribute('aria-label', 'Close menu');
+				nav?.querySelector('a')?.focus();
+			};
+
+			toggle?.addEventListener('click', () => {
+				if (body.classList.contains('nav-open')) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
+			});
+
+			closeControls.forEach((control) => {
+				control.addEventListener('click', closeMenu);
+			});
+
+			navLinks.forEach((link) => {
+				link.addEventListener('click', closeMenu);
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape') {
+					closeMenu();
+				}
+
+				if (
+					event.key === 'Tab' &&
+					body.classList.contains('nav-open') &&
+					mobileQuery.matches
+				) {
+					const focusableItems = [
+						toggle,
+						...(nav ? Array.from(nav.querySelectorAll(focusableSelector)) : []),
+					].filter((item) => item instanceof HTMLElement);
+					const firstItem = focusableItems[0];
+					const lastItem = focusableItems[focusableItems.length - 1];
+
+					if (event.shiftKey && document.activeElement === firstItem) {
+						event.preventDefault();
+						lastItem?.focus();
+					} else if (!event.shiftKey && document.activeElement === lastItem) {
+						event.preventDefault();
+						firstItem?.focus();
+					}
+				}
+			});
+
+			mobileQuery.addEventListener('change', closeMenu);
+		</script>
 	</body>
 </html>
