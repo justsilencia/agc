@@ -530,6 +530,7 @@
 	color: #3e392f;
 	font-size: clamp(1.7rem, 3vw, 2.5rem);
 	line-height: 1.05;
+	overflow-wrap: break-word;
 }
 
 .membership-panel p {
@@ -538,6 +539,7 @@
 	color: #615a4f;
 	font-size: 13px;
 	line-height: 1.62;
+	overflow-wrap: break-word;
 }
 
 .membership-seal {
@@ -784,6 +786,8 @@
 	.nav-toggle span::before,
 	.nav-toggle span::after {
 		position: absolute;
+		left: 50%;
+		top: 50%;
 		width: 22px;
 		height: 2px;
 		background: currentColor;
@@ -791,14 +795,15 @@
 		transition:
 			opacity 180ms ease,
 			transform 180ms ease;
+		transform: translate(-50%, -50%);
 	}
 
 	.nav-toggle span::before {
-		transform: translateY(-7px);
+		transform: translate(-50%, calc(-50% - 7px));
 	}
 
 	.nav-toggle span::after {
-		transform: translateY(7px);
+		transform: translate(-50%, calc(-50% + 7px));
 	}
 
 	.landing-page.nav-open .nav-toggle span {
@@ -807,12 +812,12 @@
 
 	.landing-page.nav-open .nav-toggle span::before {
 		background: currentColor;
-		transform: rotate(45deg);
+		transform: translate(-50%, -50%) rotate(45deg);
 	}
 
 	.landing-page.nav-open .nav-toggle span::after {
 		background: currentColor;
-		transform: rotate(-45deg);
+		transform: translate(-50%, -50%) rotate(-45deg);
 	}
 
 	.landing-page.nav-open .nav-toggle {
@@ -949,10 +954,13 @@
 	}
 
 	.main-nav a:hover,
-	.main-nav a:focus-visible,
-	.main-nav .is-active {
+	.main-nav a:focus-visible {
 		color: #fbf5e9;
 		padding-left: 8px;
+	}
+
+	.main-nav .is-active {
+		color: #fbf5e9;
 	}
 
 	.main-nav a:focus-visible {
@@ -986,9 +994,31 @@
 
 	.membership-section {
 		grid-template-columns: 1fr;
+		justify-items: center;
+		overflow-x: hidden;
 	}
 
 	.membership-section::before {
+		display: none;
+	}
+
+	.membership-panel {
+		width: 100%;
+		aspect-ratio: auto;
+		min-height: auto;
+		padding: 46px 28px;
+	}
+
+	.membership-panel h2,
+	.membership-panel p {
+		width: min(100%, 520px);
+	}
+
+	.membership-panel h2 {
+		font-size: clamp(1.65rem, 7vw, 2.25rem);
+	}
+
+	.desktop-break {
 		display: none;
 	}
 
@@ -1076,7 +1106,17 @@
 	}
 
 	.membership-panel {
-		padding: 34px 24px;
+		padding: 36px 18px;
+	}
+
+	.membership-panel h2 {
+		font-size: clamp(1.45rem, 8vw, 1.9rem);
+		line-height: 1.08;
+	}
+
+	.membership-panel p {
+		font-size: 12px;
+		line-height: 1.58;
 	}
 
 	.interest-meta {
