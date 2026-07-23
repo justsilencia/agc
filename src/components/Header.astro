@@ -1,6 +1,6 @@
 ---
 interface Props {
-	active?: 'about' | 'values' | 'membership' | 'apply' | 'contact';
+	active?: 'about' | 'values' | 'membership' | 'apply';
 	homeLinks?: boolean;
 }
 
@@ -38,7 +38,6 @@ const sectionHref = (id: string) => (homeLinks ? `#${id}` : `/#${id}`);
 			Membership
 		</a>
 		<a class:list={[active === 'apply' && 'is-active']} href="/apply">Apply</a>
-		<a class:list={[active === 'contact' && 'is-active']} href={sectionHref('contact')}>Contact</a>
 	</nav>
 </header>
 
