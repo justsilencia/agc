@@ -33,7 +33,7 @@ const sectionHref = (id: string) => (homeLinks ? `#${id}` : `/#${id}`);
 			</button>
 		</div>
 		<a class:list={[active === 'about' && 'is-active']} href={sectionHref('about')}>About</a>
-		<a class:list={[active === 'values' && 'is-active']} href={sectionHref('values')}>Values</a>
+		<a class:list={[active === 'values' && 'is-active']} href="/our-values">Values</a>
 		<a class:list={[active === 'membership' && 'is-active']} href={sectionHref('membership')}>
 			Membership
 		</a>

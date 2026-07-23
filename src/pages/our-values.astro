@@ -1,0 +1,62 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/landing.css';
+
+const title = 'Our Values | Appalachian Grappling Collective';
+const description =
+	'The values and training mentality behind Appalachian Grappling Collective.';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page values-page">
+		<Header active="values" />
+
+		<main>
+			<section class="values-detail-section" aria-labelledby="values-detail-title">
+				<div class="values-detail-panel">
+					<p class="eyebrow">Our Values</p>
+					<h1 id="values-detail-title">Built to strengthen more than technique.</h1>
+					<div class="values-copy">
+						<p>
+							Appalachian Grappling Collective is built on faith, personal responsibility,
+							respect, discipline, and accountability. We believe the training room should
+							strengthen more than technique; it should build character, confidence, resilience,
+							and trust. Every person who steps onto the mat is expected to treat others with
+							dignity, control their ego, accept correction, and contribute to a safe, clean,
+							and dependable training environment.
+						</p> 
+						<p>
+							We are intentionally grassroots and selective, focused on developing a close community 
+							of committed training partners rather than chasing numbers, status, or recognition. 
+							Of course, if your interest is competing in BJJ tournaments or fighting competitively, 
+							we certainly wouldn't discourage you! Competition is a healthy way to test your skills 
+							against other experienced grapplers or fighters.
+						</p>
+						<p>
+							At the center of our approach is a <strong>“train in truth” mentality</strong>.
+							That means being honest about our skill sets, physical capabilities, weaknesses,
+							and level of preparedness. We do not confuse cooperative practice with proven
+							ability, and we do not promote false confidence. Our jiu-jitsu is technical,
+							practical, and fight-oriented, with an emphasis on pressure, control, awareness,
+							and the ability to perform when resistance is real. We train responsibly, but we
+							train with purpose—seeking genuine competence, steady growth, and the confidence
+							that comes from knowing our abilities have been honestly tested.
+						</p>
+					</div>
+					<div class="values-detail-actions" aria-label="Values page actions">
+						<a class="button primary" href="/apply"><span>Apply to Join!</span></a>
+						<a class="button secondary dark" href="/"><span>Return Home</span></a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>
