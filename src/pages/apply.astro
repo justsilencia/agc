@@ -1,0 +1,195 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/landing.css';
+
+const title = 'Apply to Join the AGC Grappling Collective';
+const description =
+	'Apply to join Appalachian Grappling Collective, a private grappling group in Dandridge, Tennessee.';
+const formEmail = 'steadfast@agcbjj.com';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page application-page">
+		<Header active="apply" />
+
+		<main>
+			<section class="apply-hero" aria-labelledby="apply-title">
+				<div class="apply-heading">
+					<p class="eyebrow">Membership Application</p>
+					<h1 id="apply-title">Apply to Join the AGC Grappling Collective</h1>
+					<p>
+						Send a clear introduction and a few practical details. We review every application
+						carefully to protect the culture, safety, and focus of the group.
+					</p>
+				</div>
+
+				<form
+					class="apply-form"
+					action={`https://formsubmit.co/${formEmail}`}
+					method="POST"
+					enctype="multipart/form-data"
+					data-apply-form
+				>
+					<input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" />
+					<input type="hidden" name="_subject" value="New AGC Membership Application" />
+					<input type="hidden" name="_template" value="table" />
+
+					<div class="field-group">
+						<label for="name">Name</label>
+						<input id="name" name="name" type="text" autocomplete="name" required />
+						<p class="field-error">Please enter your name.</p>
+					</div>
+
+					<div class="field-group">
+						<label for="email">Email</label>
+						<input id="email" name="email" type="email" autocomplete="email" required />
+						<p class="field-error">Please enter a valid email address.</p>
+					</div>
+
+					<div class="field-group">
+						<label for="phone">Phone Number <span>Optional</span></label>
+						<input
+							id="phone"
+							name="phone"
+							type="tel"
+							autocomplete="tel"
+							inputmode="tel"
+							pattern="^[0-9+().\-\s]{7,}$"
+						/>
+						<p class="field-error">Please enter a valid phone number.</p>
+					</div>
+
+					<div class="field-group">
+						<label for="selfie">Selfie Image</label>
+						<div class="file-control">
+							<input
+								id="selfie"
+								name="selfie_image"
+								type="file"
+								accept="image/png,image/jpeg,image/webp"
+								required
+								data-file-input
+							/>
+							<label class="file-button" for="selfie"><span>Choose File</span></label>
+							<span class="file-name" data-file-name>No file chosen</span>
+						</div>
+						<p class="field-note">PNG, JPG, or WebP. Maximum file size is 10MB.</p>
+						<p class="field-error">Please upload a PNG, JPG, or WebP image under 10MB.</p>
+					</div>
+
+					<div class="field-group">
+						<label for="experience">Years of Experience</label>
+						<input
+							id="experience"
+							name="years_of_experience"
+							type="number"
+							inputmode="numeric"
+							min="0"
+							max="80"
+							step="1"
+							required
+						/>
+						<p class="field-error">Please enter a whole number from 0 to 80.</p>
+					</div>
+
+					<div class="field-group">
+						<label for="belt">Belt Level <span>If any</span></label>
+						<select id="belt" name="belt_level">
+							<option value="">No belt / not applicable</option>
+							<option value="White">White</option>
+							<option value="Blue">Blue</option>
+							<option value="Purple">Purple</option>
+							<option value="Brown">Brown</option>
+							<option value="Black">Black</option>
+						</select>
+					</div>
+
+					<div class="field-group field-wide">
+						<label for="anything-else">Anything Else?</label>
+						<textarea
+							id="anything-else"
+							name="anything_else"
+							rows="6"
+							placeholder="Tell us anything useful about your goals, background, schedule, or what you are looking for."
+						></textarea>
+					</div>
+
+					<button class="button primary apply-submit" type="submit">
+						<span>Submit Application</span>
+					</button>
+				</form>
+			</section>
+		</main>
+
+		<Footer />
+
+		<script>
+			const form = document.querySelector('[data-apply-form]');
+			const fileInput = document.querySelector('[data-file-input]');
+			const fileName = document.querySelector('[data-file-name]');
+			const allowedImageTypes = ['image/jpeg', 'image/png', 'image/webp'];
+			const maxFileSize = 10 * 1024 * 1024;
+
+			const validateFile = () => {
+				if (!(fileInput instanceof HTMLInputElement)) {
+					return;
+				}
+
+				const file = fileInput.files?.[0];
+
+				if (fileName) {
+					fileName.textContent = file?.name || 'No file chosen';
+				}
+
+				if (!file) {
+					fileInput.setCustomValidity('Please upload a selfie image.');
+				} else if (!allowedImageTypes.includes(file.type)) {
+					fileInput.setCustomValidity('Please upload a PNG, JPG, or WebP image.');
+				} else if (file.size > maxFileSize) {
+					fileInput.setCustomValidity('Please keep the selfie image under 10MB.');
+				} else {
+					fileInput.setCustomValidity('');
+				}
+			};
+
+			fileInput?.addEventListener('change', validateFile);
+
+			form?.addEventListener(
+				'invalid',
+				() => {
+					form.classList.add('was-validated');
+				},
+				true,
+			);
+
+			form?.addEventListener('click', (event) => {
+				if (
+					event.target instanceof HTMLButtonElement &&
+					event.target.type === 'submit'
+				) {
+					validateFile();
+				}
+			});
+
+			form?.addEventListener('submit', (event) => {
+				validateFile();
+				form.classList.add('was-validated');
+
+				if (form instanceof HTMLFormElement && !form.checkValidity()) {
+					event.preventDefault();
+					const firstInvalid = form.querySelector(':invalid');
+
+					if (firstInvalid instanceof HTMLElement) {
+						firstInvalid.focus();
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

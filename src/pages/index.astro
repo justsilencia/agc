@@ -1,5 +1,7 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 import '../styles/landing.css';
 
 const title = 'AGC | Dandridge TN Jiu Jitsu';
@@ -40,36 +42,7 @@ const values = [
 		<BaseHead title={title} description={description} />
 	</head>
 	<body class="landing-page">
-		<header class="site-header" aria-label="Primary navigation">
-			<a class="brand" href="/" aria-label="Appalachian Grappling Collective home">
-				<span class="brand-mark">
-					<img src="/logo-1.png" alt="" />
-				</span>
-				<span class="brand-name">Appalachian<br />Grappling<br />Collective</span>
-			</a>
-			<button
-				class="nav-toggle"
-				type="button"
-				aria-label="Open menu"
-				aria-controls="main-menu"
-				aria-expanded="false"
-			>
-				<span aria-hidden="true"></span>
-			</button>
-			<div class="nav-backdrop" data-nav-close></div>
-			<nav class="main-nav" id="main-menu" aria-label="Main menu">
-				<div class="mobile-nav-header">
-					<span>Menu</span>
-					<button class="nav-close" type="button" aria-label="Close menu" data-nav-close>
-						<span aria-hidden="true"></span>
-					</button>
-				</div>
-				<a class="is-active" href="#about">About</a>
-				<a href="#values">Values</a>
-				<a href="#membership">Membership</a>
-				<a href="#contact">Contact</a>
-			</nav>
-		</header>
+		<Header active="about" homeLinks />
 
 		<main>
 			<section class="hero" id="about" aria-labelledby="hero-title">
@@ -89,7 +62,7 @@ const values = [
 						serious training partners.
 					</p>
 					<div class="hero-actions" aria-label="Landing page actions">
-						<a class="button primary" href="#contact"><span>Request Information</span></a>
+						<a class="button primary" href="/apply"><span>Apply to Join!</span></a>
 						<a class="button secondary" href="#values"><span>Read Our Values</span></a>
 					</div>
 				</div>
@@ -156,115 +129,6 @@ const values = [
 			</section>
 		</main>
 
-		<footer class="site-footer" id="contact">
-			<div class="footer-brand">
-				<a class="brand" href="/" aria-label="Appalachian Grappling Collective home">
-					<span class="brand-mark">
-						<img src="/logo-1.png" alt="" />
-					</span>
-					<span class="brand-name">Appalachian<br />Grappling<br />Collective</span>
-				</a>
-				<div class="social-links" aria-label="Social links">
-					<a href="#" aria-label="Facebook group">
-						<svg viewBox="0 0 24 24" aria-hidden="true">
-							<path
-								d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.03 4.39 11.03 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.03 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.96.93-1.96 1.89v2.27h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07Z"
-							></path>
-						</svg>
-						<span>Facebook Group</span>
-					</a>
-				</div>
-			</div>
-			<div class="footer-links">
-				<h2>Quick Links</h2>
-				<a href="#about">About</a>
-				<a href="#values">Values</a>
-				<a href="#membership">Membership</a>
-				<a href="#contact">Contact</a>
-			</div>
-			<div class="footer-links">
-				<h2>Resources</h2>
-				<a href="#">Blog</a>
-				<a href="#">FAQ</a>
-				<a href="#">Rules &amp; Etiquette</a>
-				<a href="#">Waiver</a>
-			</div>
-			<address class="footer-contact">
-				<h2>Contact</h2>
-				<a href="tel:+14235557899">123 Jujitsu Way<br />Dandridge, TN 37725</a>
-				<a href="tel:+15551234567">(555) 123-4567</a>
-				<a href="mailto:steadfast@agcbjj.com">steadfast@agcbjj.com</a>
-			</address>
-			<p class="copyright">
-				© 2026 Appalachian Grappling Collective. All rights reserved.
-			</p>
-		</footer>
-		<script>
-			const body = document.body;
-			const nav = document.querySelector('#main-menu');
-			const toggle = document.querySelector('.nav-toggle');
-			const closeControls = document.querySelectorAll('[data-nav-close]');
-			const navLinks = document.querySelectorAll('.main-nav a');
-			const mobileQuery = window.matchMedia('(max-width: 900px)');
-			const focusableSelector = 'a[href], button:not([disabled])';
-
-			const closeMenu = () => {
-				body.classList.remove('nav-open');
-				toggle?.setAttribute('aria-expanded', 'false');
-				toggle?.setAttribute('aria-label', 'Open menu');
-			};
-
-			const openMenu = () => {
-				body.classList.add('nav-open');
-				toggle?.setAttribute('aria-expanded', 'true');
-				toggle?.setAttribute('aria-label', 'Close menu');
-				nav?.querySelector('a')?.focus();
-			};
-
-			toggle?.addEventListener('click', () => {
-				if (body.classList.contains('nav-open')) {
-					closeMenu();
-				} else {
-					openMenu();
-				}
-			});
-
-			closeControls.forEach((control) => {
-				control.addEventListener('click', closeMenu);
-			});
-
-			navLinks.forEach((link) => {
-				link.addEventListener('click', closeMenu);
-			});
-
-			document.addEventListener('keydown', (event) => {
-				if (event.key === 'Escape') {
-					closeMenu();
-				}
-
-				if (
-					event.key === 'Tab' &&
-					body.classList.contains('nav-open') &&
-					mobileQuery.matches
-				) {
-					const focusableItems = [
-						toggle,
-						...(nav ? Array.from(nav.querySelectorAll(focusableSelector)) : []),
-					].filter((item) => item instanceof HTMLElement);
-					const firstItem = focusableItems[0];
-					const lastItem = focusableItems[focusableItems.length - 1];
-
-					if (event.shiftKey && document.activeElement === firstItem) {
-						event.preventDefault();
-						lastItem?.focus();
-					} else if (!event.shiftKey && document.activeElement === lastItem) {
-						event.preventDefault();
-						firstItem?.focus();
-					}
-				}
-			});
-
-			mobileQuery.addEventListener('change', closeMenu);
-		</script>
+		<Footer homeLinks />
 	</body>
 </html>

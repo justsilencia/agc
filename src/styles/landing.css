@@ -227,6 +227,7 @@
 	letter-spacing: 0.16em;
 	line-height: 1;
 	text-transform: uppercase;
+	cursor: pointer;
 	transition:
 		background-color 180ms ease,
 		border-color 180ms ease,
@@ -766,6 +767,246 @@
 	text-align: center;
 }
 
+.apply-hero {
+	display: grid;
+	grid-template-columns: minmax(280px, 0.82fr) minmax(520px, 1.18fr);
+	gap: clamp(28px, 5vw, 72px);
+	align-items: start;
+	padding: clamp(54px, 7vw, 94px) 54px;
+	background:
+		linear-gradient(rgba(238, 232, 220, 0.92), rgba(238, 232, 220, 0.92)),
+		radial-gradient(circle at center, rgba(74, 62, 45, 0.14) 1px, transparent 1px);
+	background-size: auto, 26px 26px;
+}
+
+.apply-heading {
+	position: sticky;
+	top: 28px;
+	max-width: 520px;
+}
+
+.apply-heading h1 {
+	margin: 0 0 18px;
+	color: #332e27;
+	font-family: var(--serif);
+	font-size: clamp(2.6rem, 5vw, 4.2rem);
+	font-weight: 700;
+	line-height: 0.98;
+}
+
+.apply-heading p:not(.eyebrow) {
+	margin: 0;
+	color: #5a5146;
+	font-size: 15px;
+	line-height: 1.7;
+}
+
+.apply-form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+	width: 100%;
+	border: 1px solid rgba(77, 63, 44, 0.16);
+	background: rgba(245, 239, 229, 0.72);
+	padding: clamp(22px, 4vw, 38px);
+	box-shadow: 0 24px 54px rgba(45, 41, 33, 0.08);
+}
+
+.form-honey {
+	position: absolute;
+	left: -100vw;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.field-group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-width: 0;
+}
+
+.field-wide {
+	grid-column: 1 / -1;
+}
+
+.field-group label {
+	color: #3e392f;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.13em;
+	line-height: 1.25;
+	text-transform: uppercase;
+}
+
+.field-group label span {
+	color: #776f61;
+	font-weight: 700;
+}
+
+.field-group input,
+.field-group select,
+.field-group textarea {
+	width: 100%;
+	border: 1px solid rgba(77, 63, 44, 0.24);
+	background: rgba(255, 252, 246, 0.82);
+	color: #312c25;
+	font: inherit;
+	font-size: 15px;
+	transition:
+		background-color 180ms ease,
+		border-color 180ms ease,
+		box-shadow 180ms ease;
+}
+
+.field-group input,
+.field-group select {
+	height: 50px;
+	padding: 0 14px;
+	line-height: 50px;
+}
+
+.field-group textarea {
+	min-height: 148px;
+	padding: 12px 14px;
+	line-height: 1.35;
+	resize: vertical;
+}
+
+.file-control {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	min-height: 50px;
+	border: 1px solid rgba(77, 63, 44, 0.24);
+	background: rgba(255, 252, 246, 0.82);
+	padding: 10px 12px;
+}
+
+.file-control input[type='file'] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.file-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 34px;
+	padding: 0 12px;
+	border: 1px solid rgba(183, 114, 52, 0.48);
+	background: rgba(183, 114, 52, 0.1);
+	color: #000;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	line-height: 1;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition:
+		background-color 180ms ease,
+		border-color 180ms ease,
+		color 180ms ease;
+}
+
+.file-button:hover,
+.file-control:focus-within .file-button {
+	border-color: rgba(183, 114, 52, 0.76);
+	background: rgba(183, 114, 52, 0.16);
+	color: #000;
+}
+
+.field-group .file-button span {
+	display: inline-block;
+	color: #000;
+	transform: translateY(2px);
+}
+
+.file-control:focus-within {
+	border-color: rgba(183, 114, 52, 0.76);
+	background: #fffdf8;
+	box-shadow: 0 0 0 4px rgba(183, 114, 52, 0.14);
+}
+
+.file-name {
+	min-width: 0;
+	color: #312c25;
+	font-size: 14px;
+	line-height: 1.35;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+	border-color: rgba(183, 114, 52, 0.76);
+	background: #fffdf8;
+	box-shadow: 0 0 0 4px rgba(183, 114, 52, 0.14);
+	outline: none;
+}
+
+.field-group input::placeholder,
+.field-group textarea::placeholder {
+	color: rgba(81, 74, 64, 0.62);
+}
+
+.field-note,
+.field-error {
+	margin: 0;
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.field-note {
+	color: #776f61;
+}
+
+.field-error {
+	display: none;
+	color: #8b2f24;
+	font-weight: 700;
+}
+
+.apply-form.was-validated .field-group input:invalid,
+.apply-form.was-validated .field-group select:invalid,
+.apply-form.was-validated .field-group textarea:invalid {
+	border-color: rgba(139, 47, 36, 0.76);
+	background: rgba(255, 248, 246, 0.95);
+	box-shadow: 0 0 0 4px rgba(139, 47, 36, 0.1);
+}
+
+.apply-form.was-validated .field-group input:invalid ~ .field-error,
+.apply-form.was-validated .field-group select:invalid ~ .field-error,
+.apply-form.was-validated .field-group textarea:invalid ~ .field-error {
+	display: block;
+}
+
+.apply-form.was-validated .file-control:has(input:invalid) {
+	border-color: rgba(139, 47, 36, 0.76);
+	background: rgba(255, 248, 246, 0.95);
+	box-shadow: 0 0 0 4px rgba(139, 47, 36, 0.1);
+}
+
+.apply-form.was-validated .file-control:has(input:invalid) ~ .field-error {
+	display: block;
+}
+
+.apply-submit {
+	grid-column: 1 / -1;
+	justify-self: start;
+	min-width: min(100%, 260px);
+	min-height: 54px;
+	margin-top: 4px;
+}
+
 @media (max-width: 900px) {
 	.site-header {
 		align-items: center;
@@ -1012,6 +1253,21 @@
 		padding: 52px 28px;
 	}
 
+	.apply-hero {
+		grid-template-columns: 1fr;
+		gap: 30px;
+		padding: 46px 28px;
+	}
+
+	.apply-heading {
+		position: static;
+		max-width: 680px;
+	}
+
+	.apply-form {
+		grid-template-columns: 1fr;
+	}
+
 	.value-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -1119,6 +1375,41 @@
 
 	.button {
 		width: 100%;
+	}
+
+	.apply-hero {
+		padding: 38px 16px;
+	}
+
+	.apply-heading h1 {
+		font-size: clamp(2.3rem, 14vw, 3.25rem);
+	}
+
+	.apply-heading p:not(.eyebrow) {
+		font-size: 14px;
+	}
+
+	.apply-form {
+		gap: 16px;
+		padding: 20px 16px;
+	}
+
+	.apply-submit {
+		width: 100%;
+	}
+
+	.file-control {
+		align-items: stretch;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.file-button {
+		width: 100%;
+	}
+
+	.file-name {
+		white-space: normal;
 	}
 
 	.values-section {
