@@ -1,0 +1,101 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/landing.css';
+
+const title = 'FAQ | Appalachian Grappling Collective';
+const description =
+	'Frequently asked questions about Appalachian Grappling Collective in Dandridge, Tennessee.';
+
+const faqs = [
+	{
+		question: 'Where is Appalachian Grappling Collective located?',
+		answer:
+			'We currently train in a private garage at a personal residence in the Dandridge, Tennessee area. The space is properly outfitted for jiu-jitsu and intentionally kept small. Because it is a private home, the exact address is only provided to approved training partners. If the collective grows, we will consider opening a dedicated gym in the Dandridge area.',
+	},
+	{
+		question: 'Can anyone join?',
+		answer:
+			'Not automatically. Every application is reviewed individually, and acceptance is based primarily on character, values, attitude, and whether the person is a good fit for the group. Grappling experience is welcome, but our shared values and ethics come first.',
+	},
+	{
+		question: 'Do I need to sign a waiver?',
+		answer:
+			'Yes. Everyone must complete and sign a liability waiver before participating in any training session. No one will be permitted to train without one.',
+	},
+	{
+		question: 'How much does it cost to train?',
+		answer:
+			'There is currently no membership fee. Your payment is your commitment: arrive on time, keep your word, communicate responsibly, and respect the time and effort of everyone involved. Reliability and accountability are expected from every training partner.',
+	},
+	{
+		question: 'Are you a jiu-jitsu instructor?',
+		answer:
+			'No. I do not present myself as a formal instructor. I am an experienced grappler with both competition experience and real-world fighting experience. At this stage, the collective is a group of committed training partners who train, test themselves, exchange knowledge, and grow together.',
+	},
+	{
+		question: 'What does training look like?',
+		answer:
+			'Training is practical, technical, and fight-oriented. We emphasize a “train in truth” mentality, which means being honest about our skill sets, physical capabilities, weaknesses, and readiness under real resistance. The goal is not false confidence or collecting techniques—it is developing dependable grappling ability through disciplined, realistic training.',
+		emphasis: '“train in truth” mentality',
+	},
+	{
+		question: 'Is this a traditional commercial gym?',
+		answer:
+			'No. Appalachian Grappling Collective is currently a private, grassroots training group rather than a commercial academy. We are intentionally small and focused on creating a dependable community of high-character training partners.',
+	},
+	{
+		question: 'Will the collective eventually become a full gym?',
+		answer:
+			'Possibly. If the group grows steadily and there is enough local demand, we will consider opening a dedicated gym in the Dandridge area. At that point, the goal would be to hire a qualified black belt as the gym’s dedicated instructor while preserving the values and culture the collective was built upon.',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page faq-page">
+		<Header active="faq" />
+
+		<main>
+			<section class="values-detail-section faq-section" aria-labelledby="faq-title">
+				<div class="values-detail-panel faq-panel">
+					<p class="eyebrow">Frequently Asked Questions</p>
+					<h1 id="faq-title">Frequently Asked Questions</h1>
+					<div class="faq-list">
+						{
+							faqs.map((item) => (
+								<article class="faq-item">
+									<h2>{item.question}</h2>
+									<p>
+										{
+											item.emphasis ? (
+												<>
+													{item.answer.split(item.emphasis)[0]}
+													<strong>{item.emphasis}</strong>
+													{item.answer.split(item.emphasis)[1]}
+												</>
+											) : (
+												item.answer
+											)
+										}
+									</p>
+								</article>
+							))
+						}
+					</div>
+					<div class="values-detail-actions" aria-label="FAQ page actions">
+						<a class="button primary" href="/apply"><span>Apply to Join!</span></a>
+						<a class="button secondary dark" href="/our-values"><span>Read Our Values</span></a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>

@@ -1,0 +1,88 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/landing.css';
+
+const title = 'Rules & Etiquette | Appalachian Grappling Collective';
+const description =
+	'Rules and etiquette for training with Appalachian Grappling Collective.';
+
+const rules = [
+	{
+		title: 'Bring Your Own Gear',
+		text: 'Come prepared with everything you need to train, including appropriate clothing, a mouthguard if desired, water, and any personal protective equipment. Do not rely on others to provide your gear.',
+	},
+	{
+		title: 'Maintain Proper Hygiene',
+		text: 'Arrive clean, wear freshly washed training clothes, and keep your fingernails and toenails trimmed. Cover any cuts or abrasions before training. Do not train with a contagious illness, skin infection, or anything that could put your partners at risk. Cleanliness is a matter of respect.',
+	},
+	{
+		title: 'Leave Your Ego at the Door',
+		text: 'There is no room for reckless behavior, bullying, or trying to prove yourself at someone else’s expense. Tap early, release submissions immediately, accept correction, and remain humble in both success and failure. We are here to improve, not to win every round.',
+	},
+	{
+		title: 'Respect Your Training Partners',
+		text: 'Your partner’s safety comes before your pride. Match your intensity to the experience, size, age, and physical condition of the person you are training with. Communicate clearly, use control, and never intentionally injure or embarrass another member.',
+	},
+	{
+		title: 'Train in Truth',
+		text: 'Be honest about your skill set, physical capabilities, weaknesses, and level of experience. Do not exaggerate what you know or confuse cooperative drilling with real competence. We train with realistic resistance and a fight-oriented mindset, but always with control and responsibility.',
+	},
+	{
+		title: 'Be Reliable',
+		text: 'Arrive on time, communicate when circumstances change, and keep your word. There is currently no financial membership fee, but commitment and dependability are expected in return. Repeated lateness, cancellations, or unreliable behavior may result in losing the opportunity to train with the group.',
+	},
+	{
+		title: 'Protect the Training Space',
+		text: 'This is currently a private home and should be treated accordingly. Respect the property, clean up after yourself, follow all parking and access instructions, and do not share the address without permission.',
+	},
+	{
+		title: 'Follow the Group’s Standards',
+		text: 'All participants must sign a liability waiver before training. Unsafe, dishonest, disrespectful, or unethical behavior will not be tolerated. Membership is based on character and fit, and the privilege of training with the collective may be withdrawn when necessary to protect the group.',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page rules-page">
+		<Header />
+
+		<main>
+			<section class="values-detail-section faq-section" aria-labelledby="rules-title">
+				<div class="values-detail-panel faq-panel">
+					<p class="eyebrow">Rules &amp; Etiquette</p>
+					<h1 id="rules-title">Rules &amp; Etiquette</h1>
+					<div class="values-copy">
+						<p>
+							Appalachian Grappling Collective is built on respect, accountability,
+							cleanliness, and honest training. Everyone who steps onto the mat is responsible
+							for protecting the culture of the group and the well-being of their training
+							partners.
+						</p>
+					</div>
+					<div class="faq-list">
+						{
+							rules.map((item) => (
+								<article class="faq-item">
+									<h2>{item.title}</h2>
+									<p>{item.text}</p>
+								</article>
+							))
+						}
+					</div>
+					<div class="values-detail-actions" aria-label="Rules page actions">
+						<a class="button primary" href="/apply"><span>Apply to Join!</span></a>
+						<a class="button secondary dark" href="/faq"><span>Read FAQ</span></a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+	</body>
+</html>

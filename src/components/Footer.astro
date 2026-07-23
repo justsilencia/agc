@@ -1,10 +1,4 @@
 ---
-interface Props {
-	homeLinks?: boolean;
-}
-
-const { homeLinks = false } = Astro.props;
-const sectionHref = (id: string) => (homeLinks ? `#${id}` : `/#${id}`);
 const contactEmail = 'steadfast@agcbjj.com';
 ---
 
@@ -28,26 +22,27 @@ const contactEmail = 'steadfast@agcbjj.com';
 		</div>
 	</div>
 	<div class="footer-links">
-		<h2>Quick Links</h2>
-		<a href={sectionHref('about')}>About</a>
-		<a href="/our-values">Values</a>
-		<a href={sectionHref('membership')}>Membership</a>
-		<a href="/apply">Apply</a>
-	</div>
-	<div class="footer-links">
 		<h2>Resources</h2>
-		<a href="#">Blog</a>
-		<a href="#">FAQ</a>
-		<a href="#">Rules &amp; Etiquette</a>
-		<a href="#">Waiver</a>
+		<a href="/rules-etiquette">Rules &amp; Etiquette</a>
+		<a href="/our-values">Values</a>
+		<a href="/apply">Apply</a>
+		<a href="/faq">FAQ</a>
+		<a href="/waiver">Waiver</a>
 	</div>
 	<address class="footer-contact">
 		<h2>Contact</h2>
-		<a href="tel:+14235557899">123 Jujitsu Way<br />Dandridge, TN 37725</a>
-		<a href="tel:+15551234567">(555) 123-4567</a>
+		<a href="">123 Jujitsu Way<br />Dandridge, TN 37725</a>
 		<a href={`mailto:${contactEmail}`}>{contactEmail}</a>
 	</address>
 	<p class="copyright">
-		© 2026 Appalachian Grappling Collective. All rights reserved.
+		© <span data-current-year>2026</span> Appalachian Grappling Collective. All rights reserved.
 	</p>
 </footer>
+
+<script>
+	const year = document.querySelector('[data-current-year]');
+
+	if (year) {
+		year.textContent = String(new Date().getFullYear());
+	}
+</script>

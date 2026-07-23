@@ -1,0 +1,385 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/landing.css';
+
+const title = 'Participant Waiver | Appalachian Grappling Collective';
+const description =
+	'Adult participant waiver, release of liability, assumption of risk, and indemnification agreement for Appalachian Grappling Collective.';
+
+const coveredActivities = [
+	'Brazilian jiu-jitsu, submission grappling, wrestling, takedowns and ground fighting;',
+	'Sparring, rolling, drilling, positional training and conditioning;',
+	'Self-defense and fight-oriented training;',
+	'Striking-related demonstrations or exercises when included in a training session;',
+	'Use of mats, training equipment and other portions of the property;',
+	'Observing, assisting with or being present during training; and',
+	'Entering, parking at, walking through or otherwise being present at the private residence where training occurs.',
+];
+
+const risks = [
+	'Bruises, cuts, abrasions, mat burns and bleeding;',
+	'Sprains, strains, dislocations and torn muscles, tendons or ligaments;',
+	'Broken bones and dental injuries;',
+	'Concussions, traumatic brain injuries and loss of consciousness;',
+	'Neck, back, spinal cord or neurological injuries;',
+	'Joint damage, including injuries to the knees, shoulders, elbows, wrists, ankles and fingers;',
+	'Choking, restricted breathing or restricted blood flow;',
+	'Eye, ear and facial injuries;',
+	'Heart attack, stroke or other medical emergencies;',
+	'Exposure to bacteria, viruses, fungi, skin infections or communicable illnesses;',
+	'Permanent disability, paralysis or death;',
+	'Emotional distress, financial loss, lost wages and medical expenses; and',
+	'Property damage or loss.',
+];
+
+const releasedClaims = [
+	'Ordinary negligence by a Released Party;',
+	'Negligent maintenance or condition of the premises, mats or equipment;',
+	'Negligent supervision, organization or selection of training partners;',
+	'Negligent instruction, demonstration or communication;',
+	'Failure to warn of a condition or danger;',
+	'Negligent rendering of first aid or emergency assistance;',
+	'Injuries caused by another participant; and',
+	'Personal injury, illness, disability, death, emotional harm, property damage, medical expense, lost income or any other loss.',
+];
+
+const indemnityItems = [
+	'My conduct while participating in or attending the covered activities;',
+	'Injury or damage that I cause to another person or their property;',
+	'My violation of the collective’s rules or safety requirements; or',
+	'A claim brought on my behalf that is contrary to the release and covenant contained in this Agreement.',
+];
+
+const healthCertifications = [
+	'I am physically and mentally capable of participating;',
+	'I have disclosed any condition that could create a significant danger to myself or others;',
+	'I am not participating while impaired by alcohol, illegal drugs or medication that makes participation unsafe;',
+	'I will not train while suffering from a contagious illness, open or uncovered wound, unexplained rash, ringworm, staph infection or other communicable skin condition; and',
+	'I am responsible for obtaining medical advice before participating if I have any doubt about my health or fitness.',
+];
+
+const medicalRisks = [
+	'No Released Party is obligated to provide medical treatment;',
+	'Any assistance may be provided by someone without medical training;',
+	'Emergency transportation or treatment may involve additional risks; and',
+	'I am solely responsible for all ambulance, hospital, physician, rehabilitation and other medical expenses.',
+];
+
+const rules = [
+	'Bring and maintain my own suitable gear;',
+	'Arrive clean and wear freshly washed training clothing;',
+	'Keep my fingernails and toenails trimmed;',
+	'Cover cuts and abrasions properly;',
+	'Refrain from training while ill or contagious;',
+	'Tap when necessary and immediately release any submission when my partner taps or communicates distress;',
+	'Use reasonable control and account for differences in size, experience, age and physical condition;',
+	'Avoid reckless, malicious or intentionally harmful conduct;',
+	'Respect the residence, property, hosts and other participants;',
+	'Keep the private address confidential and not invite or bring others without permission; and',
+	'Leave the property when directed.',
+];
+
+const affirmations = [
+	'I am at least 18 years old;',
+	'I have had the opportunity to ask questions;',
+	'I have had the opportunity to consult an attorney;',
+	'I am signing voluntarily and without coercion;',
+	'I am not relying on any oral statement that contradicts this Agreement; and',
+	'I intend for this Agreement to bind me and, to the fullest extent permitted by law, my heirs, estate, personal representatives, executors, administrators and assigns.',
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body class="landing-page waiver-page">
+		<Header />
+
+		<main>
+			<section class="waiver-section" aria-labelledby="waiver-title">
+				<div class="waiver-shell">
+					<div class="waiver-toolbar" aria-label="Waiver actions">
+						<a class="button secondary dark" href="/"><span>Return Home</span></a>
+						<button class="button primary" type="button" data-print-waiver>
+							<span>Print Waiver</span>
+						</button>
+					</div>
+
+					<article class="waiver-document" aria-labelledby="waiver-title">
+						<header class="waiver-document-header">
+							<p>Appalachian Grappling Collective</p>
+							<h1 id="waiver-title">
+								Adult Participant Waiver, Release of Liability, Assumption of Risk, and
+								Indemnification Agreement
+							</h1>
+							<p>
+								<strong>
+									Please read carefully. This is a legally binding document that affects
+									your rights.
+								</strong>
+							</p>
+						</header>
+
+						<section class="waiver-block">
+							<h2>1. Participant Information</h2>
+							<div class="waiver-lines">
+								<p>Participant’s full legal name: <span></span></p>
+								<p>Date of birth: <span></span></p>
+								<p>Phone: <span></span></p>
+								<p>Address: <span></span></p>
+								<p>Emergency contact: <span></span></p>
+								<p>Emergency contact phone: <span></span></p>
+							</div>
+						</section>
+
+						<section class="waiver-block">
+							<h2>2. Covered Activities and Premises</h2>
+							<p>
+								In consideration for being permitted to enter the premises and participate in
+								activities associated with Appalachian Grappling Collective, I voluntarily
+								agree to the terms of this Agreement.
+							</p>
+							<p>The covered activities include, without limitation:</p>
+							<ul>
+								{coveredActivities.map((item) => <li>{item}</li>)}
+							</ul>
+							<p>
+								For purposes of this Agreement, “Released Parties” means Appalachian
+								Grappling Collective, its organizer or host, the owner and occupants of the
+								residence and property, their spouses and family members, training partners,
+								volunteers, guests, representatives, successors and assigns.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>3. Acknowledgment of Risks</h2>
+							<p>
+								I understand that grappling, jiu-jitsu, wrestling and fight-oriented training
+								are inherently dangerous physical activities involving close bodily contact,
+								force, resistance, impact, joint manipulation, choking techniques, throws,
+								takedowns and unpredictable movement.
+							</p>
+							<p>I understand that participation may result in injuries including, but not limited to:</p>
+							<ul>
+								{risks.map((item) => <li>{item}</li>)}
+							</ul>
+							<p>
+								I understand that these risks may result from my own actions or condition,
+								the actions of another participant, the condition of the mats or equipment,
+								the condition of the residence or surrounding property, accidental contact,
+								improper technique, equipment failure, inadequate supervision or instruction,
+								or the ordinary negligence of one or more Released Parties.
+							</p>
+							<p>
+								I understand that this is a private training group located at a personal
+								residence and not presently a commercial martial-arts academy. I further
+								understand that the organizer does not represent himself as a licensed
+								medical professional or dedicated black-belt instructor.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>4. Voluntary Participation and Assumption of Risk</h2>
+							<p>I voluntarily choose to participate with full knowledge of the risks involved.</p>
+							<p>
+								I knowingly and freely accept and assume all known and unknown risks
+								associated with the covered activities and my presence on the property,
+								whether those risks are obvious or not and whether they arise from the
+								activity itself, the premises, another participant, equipment, or the
+								ordinary negligence of a Released Party.
+							</p>
+							<p>
+								I accept full responsibility for determining whether I am physically,
+								mentally and medically capable of participating. I understand that I may
+								decline any drill, technique or round and may stop participating at any time.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>5. Release and Waiver of Liability</h2>
+							<p class="waiver-strong">
+								To the fullest extent permitted by Tennessee law, I release, waive and
+								forever discharge the Released Parties from all claims, demands, damages,
+								losses, liabilities, actions or causes of action arising from or related to
+								my participation, my presence on the property or my use of any equipment.
+							</p>
+							<p>This release expressly includes claims alleging:</p>
+							<ul>
+								{releasedClaims.map((item) => <li>{item}</li>)}
+							</ul>
+							<p>
+								This Agreement is intended to be as broad and inclusive as Tennessee law
+								permits. It does not release conduct that cannot lawfully be released by
+								contract.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>6. Covenant Not to Sue</h2>
+							<p>
+								To the fullest extent permitted by law, I agree not to file, initiate,
+								maintain or assist in any lawsuit or claim against a Released Party for any
+								matter released under this Agreement.
+							</p>
+							<p>
+								I understand that by signing this Agreement, I am giving up substantial legal
+								rights, including the possible right to recover compensation for injuries or
+								losses caused by a Released Party’s ordinary negligence.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>7. Indemnification</h2>
+							<p>
+								To the fullest extent permitted by law, I agree to indemnify, defend and hold
+								harmless the Released Parties from claims, liabilities, damages, judgments,
+								expenses and reasonable attorneys’ fees arising from:
+							</p>
+							<ul>
+								{indemnityItems.map((item) => <li>{item}</li>)}
+							</ul>
+							<p>
+								This provision does not require me to indemnify a Released Party for conduct
+								that cannot legally be released or indemnified under Tennessee law.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>8. Medical Condition and Health Certification</h2>
+							<p>I represent that:</p>
+							<ul>
+								{healthCertifications.map((item) => <li>{item}</li>)}
+							</ul>
+							<p>
+								I understand that the Released Parties are not responsible for evaluating or
+								monitoring my medical fitness.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>9. Emergency Medical Authorization</h2>
+							<p>
+								If I become injured or ill and am unable to make decisions, I authorize the
+								Released Parties to contact emergency services and provide reasonable first
+								aid until professional assistance arrives.
+							</p>
+							<p>I understand that:</p>
+							<ul>
+								{medicalRisks.map((item) => <li>{item}</li>)}
+							</ul>
+							<p>
+								I release the Released Parties from claims arising from the good-faith
+								provision of, failure to provide or delay in providing emergency assistance,
+								to the fullest extent permitted by law.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>10. Personal Property</h2>
+							<p>
+								I am solely responsible for my vehicle, clothing, equipment, electronics and
+								other belongings. I release the Released Parties from claims involving lost,
+								stolen or damaged property, except where such a release is prohibited by law.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>11. Compliance With Rules</h2>
+							<p>
+								I agree to follow all rules, hygiene standards, parking instructions, access
+								restrictions and safety directions established by Appalachian Grappling
+								Collective.
+							</p>
+							<p>I specifically agree to:</p>
+							<ul>
+								{rules.map((item) => <li>{item}</li>)}
+							</ul>
+							<p>I understand that permission to participate may be withdrawn at any time.</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>12. Insurance and Financial Responsibility</h2>
+							<p>
+								I understand that Appalachian Grappling Collective and the Released Parties
+								do not provide health, accident, disability or life insurance for me.
+							</p>
+							<p>
+								I accept sole financial responsibility for injuries, medical treatment,
+								rehabilitation, lost wages, property damage and all other consequences
+								arising from my participation or presence on the property, regardless of
+								whether I have personal insurance coverage.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>13. Governing Law and Venue</h2>
+							<p>This Agreement shall be governed by the laws of the State of Tennessee.</p>
+							<p>
+								To the extent permitted by law, any dispute concerning this Agreement or the
+								covered activities shall be brought exclusively in a court of competent
+								jurisdiction located in Jefferson County, Tennessee.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>14. Severability</h2>
+							<p>
+								If any provision of this Agreement is found invalid or unenforceable, that
+								provision shall be modified or severed only to the minimum extent necessary.
+								The remaining provisions shall continue in full force and effect.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>15. Continuing Effect</h2>
+							<p>
+								This Agreement applies to my current participation and every future visit,
+								practice, training session, event or activity associated with Appalachian
+								Grappling Collective unless replaced or revoked in writing by the organizer.
+							</p>
+						</section>
+
+						<section class="waiver-block">
+							<h2>16. Knowing and Voluntary Agreement</h2>
+							<p class="waiver-strong">
+								I acknowledge that I have carefully read this entire Agreement. I understand
+								its terms and understand that I am waiving important legal rights, including
+								certain rights to sue for injuries caused by ordinary negligence.
+							</p>
+							<p>I affirm that:</p>
+							<ul>
+								{affirmations.map((item) => <li>{item}</li>)}
+							</ul>
+						</section>
+
+						<section class="waiver-block waiver-signatures">
+							<h2>Participant Signature</h2>
+							<p>Participant’s printed name: <span></span></p>
+							<p>Participant’s signature: <span></span></p>
+							<p>Date signed: <span></span></p>
+						</section>
+
+						<section class="waiver-block waiver-signatures">
+							<h2>Witness</h2>
+							<p>Witness’s printed name: <span></span></p>
+							<p>Witness’s signature: <span></span></p>
+							<p>Date signed: <span></span></p>
+						</section>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<Footer />
+
+		<script>
+			document.querySelector('[data-print-waiver]')?.addEventListener('click', () => {
+				window.print();
+			});
+		</script>
+	</body>
+</html>

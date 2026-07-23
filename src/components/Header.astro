@@ -1,11 +1,9 @@
 ---
 interface Props {
-	active?: 'about' | 'values' | 'membership' | 'apply';
-	homeLinks?: boolean;
+	active?: 'values' | 'apply' | 'faq';
 }
 
-const { active = 'about', homeLinks = false } = Astro.props;
-const sectionHref = (id: string) => (homeLinks ? `#${id}` : `/#${id}`);
+const { active } = Astro.props;
 ---
 
 <header class="site-header" aria-label="Primary navigation">
@@ -32,12 +30,9 @@ const sectionHref = (id: string) => (homeLinks ? `#${id}` : `/#${id}`);
 				<span aria-hidden="true"></span>
 			</button>
 		</div>
-		<a class:list={[active === 'about' && 'is-active']} href={sectionHref('about')}>About</a>
 		<a class:list={[active === 'values' && 'is-active']} href="/our-values">Values</a>
-		<a class:list={[active === 'membership' && 'is-active']} href={sectionHref('membership')}>
-			Membership
-		</a>
 		<a class:list={[active === 'apply' && 'is-active']} href="/apply">Apply</a>
+		<a class:list={[active === 'faq' && 'is-active']} href="/faq">FAQ</a>
 	</nav>
 </header>
 
